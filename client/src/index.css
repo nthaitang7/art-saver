@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 38 40% 96%;
+    --foreground: 252 20% 14%;
+    --card: 0 0% 100%;
+    --card-foreground: 252 20% 14%;
+    --primary: 255 45% 40%;
+    --primary-foreground: 40 40% 97%;
+    --secondary: 38 30% 90%;
+    --secondary-foreground: 255 25% 22%;
+    --muted: 38 26% 91%;
+    --muted-foreground: 250 10% 40%;
+    --accent: 8 65% 54%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 38 22% 84%;
+    --input: 38 22% 84%;
+    --ring: 255 45% 45%;
+    --gold: 41 70% 50%;
+    --radius: 0.85rem;
+  }
+
+  .dark {
+    --background: 252 22% 8%;
+    --foreground: 40 30% 95%;
+    --card: 252 20% 12%;
+    --card-foreground: 40 30% 95%;
+    --primary: 255 60% 68%;
+    --primary-foreground: 252 30% 9%;
+    --secondary: 252 16% 18%;
+    --secondary-foreground: 40 30% 95%;
+    --muted: 252 16% 16%;
+    --muted-foreground: 250 12% 68%;
+    --accent: 8 70% 62%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 252 14% 22%;
+    --input: 252 14% 24%;
+    --ring: 255 60% 62%;
+    --gold: 41 72% 60%;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    min-height: 100vh;
+    background-image: radial-gradient(circle at 10% 4%, hsl(var(--primary) / 0.1), transparent 40%),
+      radial-gradient(circle at 92% 2%, hsl(var(--accent) / 0.1), transparent 36%);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.25);
+  }
+}
+
+@layer components {
+  .card-surface {
+    @apply rounded-lg border bg-card text-card-foreground shadow-sm;
+  }
+
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+}
+
+/* A soft dotted texture for empty states. Pure CSS, no images. */
+.dotfield {
+  background-image: radial-gradient(hsl(var(--foreground) / 0.18) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
